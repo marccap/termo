@@ -1,0 +1,54 @@
+<div style="text-align:left">
+  <h1> {{ title }} </h1>
+</div>
+
+<br><br>
+
+
+<mat-tab-group>
+  <mat-tab label="Hus1">
+    <ul *ngIf="hus1Observable$ | async as hus1Obj else noDataHus1">
+      <li *ngFor="let keyVal of hus1Obj">
+          {{ keyVal.name }}
+          <br>
+          {{ keyVal.temperature }} - Temperatur
+          <br>
+          {{ keyVal.humidity + " - Luftfuktighet" }}
+      </li> 
+    </ul>
+
+    <ng-template #noDataHus1>No Data Available for Hus1 <br> 
+      - Is the Express server up and running?, npm start <br>
+      - Is hus1Url var defined in http.service? <br>
+      - Does getHus1() returns in http.service <br>
+      - EC 500, int serv err, is hus1 obj def Express serv? <br>
+      - EC 404, Not Found, is Route 1 def in Express serv? <br>
+      - EC 0, unknown err, homes.listen may be missing in Express server
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Hus2">
+      <ul *ngIf="hus2Observable$ | async as hus2Obj else noDataHus2">
+        <li *ngFor="let keyVal of hus2Obj">
+            {{ keyVal.name }}
+            <br>
+            {{ keyVal.temperature }} - Temperatur
+            <br>
+            {{ keyVal.humidity }} - Luftfuktighet
+        </li> 
+      </ul>
+      
+      <ng-template #noDataHus2>No Data Available for Hus2 <br> 
+        - Is the Express server up and running?, npm start <br>
+        - Is hus2Url var defined in http.service? <br>
+        - Does getHus2() returns in http.service <br>
+        - EC 500, int serv err, is hus2 obj def Express serv? <br>
+        - EC 404, Not Found, is Route 2 def in Express serv? <br>
+        - EC 0, unknown err, homes.listen may be missing in Express server
+      </ng-template>    
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
